@@ -48,7 +48,7 @@ const RegistrationTab = () => {
     setShowAlertErrorEmpty(false)
   };
 
-  const renderSnackbar = (isOpen, onClose, severity, message) => {
+  const renderSnackbar = (isOpen: boolean, onClose: () => any, severity: any, message: string) => {
     return (
       <Snackbar open={isOpen} autoHideDuration={3000} onClose={onClose}>
         <Alert severity={severity} onClose={onClose}>

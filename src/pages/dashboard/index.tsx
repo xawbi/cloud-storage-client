@@ -1,7 +1,7 @@
 import {GetServerSidePropsContext, NextPage} from "next";
 import {checkAuth} from "@/utils/checkAuth";
 import Layout from "@/component/layouts/Layout";
-import React from "react"
+import React, {ComponentType} from "react"
 import Dashboard from "@/component/dashboard/Dashboard";
 import * as Api from "@/api";
 import {FileDTO} from "@/api/dto/file.dto";
@@ -12,7 +12,11 @@ interface Props {
   trashItem: FileDTO[]
 }
 
-const DashboardPage: NextPage<Props> = ({items, photosItem, trashItem}) => {
+interface DashboardPageStatic {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+}
+
+const DashboardPage: NextPage<Props> & { getLayout?: (page: React.ReactNode) => React.ReactNode } = ({ items, photosItem, trashItem }) => {
 
   return (
     <>
@@ -21,9 +25,9 @@ const DashboardPage: NextPage<Props> = ({items, photosItem, trashItem}) => {
   )
 }
 
-DashboardPage.getLayout = (page: React.ReactNode) => {
-  return <Layout title="Dashboard / Профиль">{page}</Layout>
-}
+DashboardPage.getLayout = function getLayout(page: React.ReactNode) {
+  return <Layout title="Dashboard / Профиль">{page}</Layout>;
+};
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const authProps = await checkAuth(ctx)

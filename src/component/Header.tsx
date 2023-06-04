@@ -23,7 +23,7 @@ export default function Header() {
     if (id === 1) {
       setTimeout(() => {
         dispatch(clearFileList())
-      }, 1000)
+      }, 2000)
     }
   }
 

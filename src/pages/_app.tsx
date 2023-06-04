@@ -8,19 +8,21 @@ import createEmotionCache from '../component/mui/createEmotionCache';
 import store from "@/store";
 import {Provider} from "react-redux";
 import '../style.css';
+import {ReactElement, ReactNode} from "react";
+import Layout from "@/component/layouts/Layout";
 
 const clientSideEmotionCache = createEmotionCache();
 
 export interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
   Component: AppProps['Component'] & {
-    getLayout: (page: React.ReactElement) => React.ReactNode
+    getLayout?: (page: ReactElement) => ReactNode
   }
 }
 
 export default function MyApp(props: MyAppProps) {
   const {Component, emotionCache = clientSideEmotionCache, pageProps} = props;
-  const getLayout = Component.getLayout || ((page: React.ReactNode) => page)
+  const getLayout = Component.getLayout || ((page: ReactNode) => page)
 
   return (
     <CacheProvider value={emotionCache}>

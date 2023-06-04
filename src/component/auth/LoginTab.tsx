@@ -10,7 +10,7 @@ const LoginTab = () => {
   const router = useRouter()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showAlertError, setShowAlertError] = useState(false);
+  const [showAlertError, setShowAlertError] = useState<boolean>(false);
   const [showAlertErrorEmpty, setShowAlertErrorEmpty] = useState(false);
   const [showAlertSuccess, setShowAlertSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -46,7 +46,7 @@ const LoginTab = () => {
     setShowAlertErrorEmpty(false)
   };
 
-  const renderSnackbar = (isOpen, onClose, severity, message) => {
+  const renderSnackbar = (isOpen: boolean, onClose: () => any, severity: any, message: string) => {
     return (
       <Snackbar open={isOpen} autoHideDuration={3000} onClose={onClose}>
         <Alert severity={severity} onClose={onClose}>

@@ -22,13 +22,13 @@ const UploadButton: FC = memo(() => {
   // const [fileList, setFileList] = useState<any>([])
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  const onUploadSuccess = async (file) => {
+  const onUploadSuccess = async (file: any) => {
     try {
         const options = await Api.file.uploadFile({
           file: file,
           onSuccess: () => {},
-          onError: (error) => {},
-          onProgress: (percentCompleted) => {
+          onError: (error: any) => {},
+          onProgress: (percentCompleted: any) => {
             setUploadProgress(percentCompleted)
           }
         })
@@ -53,7 +53,7 @@ const UploadButton: FC = memo(() => {
     setShowAlertError(false);
   };
 
-  const renderSnackbar = (isOpen, onClose, severity, message) => {
+  const renderSnackbar = (isOpen: boolean, onClose: () => any, severity: any, message: string) => {
     return (
       <Snackbar open={isOpen} autoHideDuration={3000} onClose={onClose}>
         <Alert severity={severity} onClose={onClose}>
@@ -63,8 +63,8 @@ const UploadButton: FC = memo(() => {
     )
   }
 
-  const FileUploadButton = ({ onFileSelect }) => {
-    const handleFileSelect = (event) => {
+  const FileUploadButton = ({ onFileSelect }: { onFileSelect: (file: File) => void }) => {
+    const handleFileSelect = (event: any) => {
       const file = event.target.files[0];
       onFileSelect(file);
     };

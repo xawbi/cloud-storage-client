@@ -6,11 +6,11 @@ import funcExtensions from './funcExtensions'
 interface FileItemProps {
   fileName: string
   imgUrl: string
-  ext: string
+  ext: string | undefined
 }
 
 const ModelCard: FC<FileItemProps> = ({ fileName, imgUrl, ext }) => {
-  const handleError = (event) => {
+  const handleError = (event: any) => {
     event.target.style.display = 'none'
   }
 

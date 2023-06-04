@@ -11,7 +11,7 @@ interface UserProps {
   userData: UserDTO;
 }
 
-const Profile: NextPage<UserProps> = ({userData}) => {
+const Profile: NextPage<UserProps> & { getLayout?: (page: React.ReactNode) => React.ReactNode } = ({userData}) => {
   const router = useRouter()
 
   const onClickLogout = () => {

@@ -10,7 +10,7 @@ import RegistrationTab from "@/component/auth/RegistrationTab";
 const AuthForm: FC = () => {
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabChange = (_, newValue) => {
+  const handleTabChange = (_: any, newValue: any) => {
     setActiveTab(newValue);
   };
 

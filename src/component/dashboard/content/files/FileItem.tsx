@@ -16,8 +16,8 @@ const FileItem: FC<FilesProps> = ({item}) => {
 
   return (
     <>
-      <Grid sx={{cursor: 'pointer'}} key={item.id} item xs={6} sm={4} md={3} lg={3}>
-        <ModelCard fileName={item.originalName} imgUrl={imgUrl}/>
+      <Grid sx={{cursor: 'pointer'}} item xs={6} sm={4} md={3} lg={3}>
+        <ModelCard fileName={item.originalName} imgUrl={imgUrl} ext={ext}/>
       </Grid>
     </>
   )
